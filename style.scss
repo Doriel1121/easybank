@@ -1,0 +1,351 @@
+* {
+    margin: 0px;
+}
+
+body {
+
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+@mixin display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+$blue-color: hsl(192, 70%, 51%);
+$green-color:hsl(136, 65%, 51%);
+
+.menu {
+    position: absolute;
+    padding-left: 10%;
+    padding-right: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    height: 80px;
+    width: 80%;
+    z-index: 10000;
+
+    ul {
+        overflow: hidden;
+        width: 40vw;
+        height: 100%;
+        @include display;
+        justify-content: center;
+        gap: 30px;
+
+        li {
+            height: 100%;
+            line-height: 80px;
+            list-style: none;
+            color: grey;
+            padding-bottom: 10px;
+            position: relative;
+            transition: padding-bottom 0.5s;
+            text-decoration: none;
+        }
+
+        li:after {
+            opacity: 0;
+            content: "";
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            height: 5px;
+            width: 100%;
+            background: #444;
+            background: linear-gradient(270deg, $blue-color 0%, $green-color);
+            transition: opacity 0.5s ease-in;
+        }
+
+        li:hover {
+            cursor: pointer;
+        }
+
+        li:hover::after {
+            opacity: 1;
+            content: "";
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            height: 5px;
+            width: 100%;
+            background: #444;
+            background: linear-gradient(270deg, $blue-color 0%, $green-color);
+        }
+
+    }
+}
+
+button {
+    color: white;
+    background: linear-gradient(270deg, $blue-color 0%, $green-color, $blue-color, $green-color);
+    background-size: 300%;
+    background-position: left;
+    width: 150px;
+    height: 40px;
+    border-radius: 30px;
+    border: transparent;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.5s background-position ease-in-out, opacity 1s;
+}
+
+button:hover {
+    opacity: 1;
+    background-position: right;
+}
+
+.front-page {
+    padding-left: 10%;
+    @include display;
+    height: 90vh;
+
+    .title {
+        h1 {
+            margin-bottom: 30px;
+            font-size: 60px;
+        }
+
+        p {
+            margin-bottom: 30px;
+            font-size: 20px;
+            color: grey;
+        }
+    }
+
+    .img-container {
+        overflow-x: hidden;
+        overflow-y: hidden;
+        // height: 100vh;
+        background: url('./easybank-landing-page-master/easybank-landing-page-master/images/bg-intro-desktop.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        img {
+            width: 100%;
+            height: auto;
+            position: relative;
+            left: 16%;
+        }
+    }
+}
+
+.why-section {
+    background-color: #f7f7f7;
+    padding-top: 40px;
+    padding-bottom: 50px;
+    margin-top: 100px;
+    padding-left: 8%;
+    padding-right: 8%;
+
+    .four-reasons {
+        margin-top: 50px;
+        @include display;
+        column-gap: 10px;
+
+        .reason {
+            img {
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                margin-bottom: 20px;
+            }
+
+            p {
+                color: grey;
+            }
+        }
+    }
+}
+
+.latest-articles {
+    padding-top: 150px;
+    background-color: #f9f9f9;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 15vh;
+
+    h1 {
+        margin-bottom: 50px
+    }
+
+    .cards {
+        @include display;
+        gap: 40px;
+
+        .card {
+            background-color: white;
+
+            .card-text {
+                padding: 20px;
+
+                span {
+                    color: grey;
+                }
+
+                h3 {
+                    margin-bottom: 15px;
+                    margin-top: 15px;
+                    cursor: pointer;
+                    color: black;
+                    transition: 0.25s;
+                }
+
+                h3:hover {
+                    color: hsl(162, 65%, 32%);
+                }
+
+                p {
+                    font-size: 15px;
+
+                }
+            }
+
+            img {
+                width: 100%;
+                height: 188px;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+            }
+
+
+        }
+
+
+    }
+}
+
+.footer {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 10%;
+    padding-right: 10%;
+    display: grid;
+    grid-template-columns: 30% 20% 20% 30% ;
+    background-color: #2d314e;
+
+    .logo-socials {
+        @include display;
+        flex-direction: column;
+
+        .social {
+            @include display;
+            gap: 10px;
+
+            li {
+                list-style: none;
+
+                svg path {
+                    fill: white;
+                    transition: 0.25s;
+                }
+
+                svg path:hover {
+                    cursor: pointer;
+                    fill: rgb(6, 196, 6);
+                }
+            }
+
+
+
+
+        }
+    }
+
+    .fotter-menu {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1em;
+
+        li {
+            list-style: none;
+
+            a {
+                color: white;
+                text-decoration: none;
+                transition: 0.25s;
+            }
+
+            a:hover {
+                color: hsl(162, 65%, 32%);
+            }
+        }
+    }
+
+    .fourth {
+        @include display;
+        flex-direction: column;
+
+        span {
+            color: white;
+        }
+    }
+}
+
+@media screen and (max-width:900px) {
+    .menu {
+        ul {
+            display: none;
+        }
+    }
+
+    .front-page {
+        display: flex;
+        flex-direction: column-reverse;
+        padding-left: 5%;
+        padding-right: 5%;
+        height: 100%;
+
+        .title {
+            padding-right: 5%;
+            text-align: center;
+            h1{
+                font-size: 2rem;
+            }
+        }
+
+        .img-container {
+            height: 65vh;
+
+            img {
+                width: 100%;
+                height: auto;
+                position: unset;
+            }
+        }
+    }
+
+    .latest-articles {
+        text-align: center;
+
+        .cards {
+            flex-direction: column;
+
+            .card {
+                width: 90%;
+                height: auto;
+            }
+        }
+    }
+
+    .why-section {
+        text-align: center;
+
+        .four-reasons {
+            .reason {
+                margin-top: 30px;
+            }
+
+            flex-direction: column;
+        }
+    }
+    .footer{
+        grid-template-columns: 50% 50%;
+        grid-gap: 0.5rem;
+    }
+}
